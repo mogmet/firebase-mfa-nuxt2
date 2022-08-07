@@ -4,7 +4,7 @@
     <v-card>
       <v-card-title>Send MFA code</v-card-title>
       <v-card-text>
-        <v-text-field v-model="phone" label="phone"></v-text-field>
+        <v-text-field v-model="phoneNumber" label="phone"></v-text-field>
       </v-card-text>
       <v-card-actions justify="end">
         <v-spacer></v-spacer>
@@ -36,7 +36,7 @@ export default Vue.extend({
   data() {
     const recaptchaId = -1
     return {
-      phone: '',
+      phoneNumber: '',
       verificationCode: '',
       recaptchaId,
       verificationId: ''
@@ -77,7 +77,7 @@ export default Vue.extend({
         console.log('mutifactor')
         const multiFactorSession = await multiFactor(auth.currentUser).getSession()
         const phoneInfoOptions: PhoneInfoOptions = {
-          phoneNumber: this.phone,
+          phoneNumber: this.phoneNumber,
           session: multiFactorSession
         };
         console.log('verify', phoneInfoOptions)
