@@ -1,6 +1,14 @@
 import colors from 'vuetify/es5/util/colors'
-
 export default {
+  env: {
+    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+    FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
+    FIREBASE_DATABASE_URL: process.env.FIREBASE_DATABASE_URL,
+    FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
+    FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    FIREBASE_APP_ID: process.env.FIREBASE_APP_ID
+  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -27,7 +35,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/plugins/firebase.ts'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
