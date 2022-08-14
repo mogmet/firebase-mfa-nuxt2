@@ -89,6 +89,7 @@ export default Vue.extend({
       }
       if (!recaptchaVerifier) {
         this.setRecaptcha().then()
+        alert('Please resend')
         return
       }
       try {

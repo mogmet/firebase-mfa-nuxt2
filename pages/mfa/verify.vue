@@ -30,6 +30,8 @@
 import Vue from 'vue'
 import { RecaptchaVerifier, multiFactor, PhoneAuthProvider, PhoneMultiFactorGenerator, PhoneInfoOptions } from 'firebase/auth'
 import { isFirebaseError } from '~/plugins/firebase'
+
+// mountしたあとに生成する必要があるのと、失敗時は再生成するのでletで定義
 let recaptchaVerifier: RecaptchaVerifier | null = null
 export default Vue.extend({
   name: 'PageMfaVerify',
@@ -58,7 +60,7 @@ export default Vue.extend({
       try {
         if (this.recaptchaId === -1 || !recaptchaVerifier) {
           await this.setRecaptcha()
-          alert('もう一度押してください')
+          alert('Please resend')
           return
         }
         const auth = this.$auth
