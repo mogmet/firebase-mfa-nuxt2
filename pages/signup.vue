@@ -12,6 +12,7 @@
         <v-spacer></v-spacer>
       </v-card-actions>
     </v-card>
+    <nuxt-link to="/login">Login is here!!</nuxt-link>
   </v-container>
 </template>
 

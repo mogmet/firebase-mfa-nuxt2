@@ -1,4 +1,4 @@
-import { initializeApp, getApps, FirebaseApp } from "firebase/app"
+import {initializeApp, getApps, FirebaseApp, FirebaseError} from "firebase/app"
 import { getAuth, Auth } from "firebase/auth"
 import { Plugin } from '@nuxt/types'
 export interface IFirebasePlugin {
@@ -21,3 +21,9 @@ const firebasePlugin: Plugin = (_, inject) => {
   inject('auth', getAuth(firebaseApp))
 }
 export default firebasePlugin
+
+export function isFirebaseError(arg: unknown): arg is FirebaseError {
+  return arg !== null &&
+    typeof arg === "object" &&
+    typeof (arg as FirebaseError).code === "string"
+}
